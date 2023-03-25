@@ -38,8 +38,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyTableViewCell") as? MyTableViewCell else { return UITableViewCell() }
         let item = taskelement[indexPath.row]
-        cell.lbl1.text = "\(item.id)"
-        cell.lbl2.text = item.name
+//        cell.lbl1.text = "\(item.id)"
+//        cell.lbl2.text = item.name
         return cell
 
     }
@@ -50,7 +50,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
 
 extension ViewController {
-    func moviesApi() {
+    func moviesApi() -> Void {
         do {
             self.reachability = try Reachability.init()
         } catch {
@@ -59,8 +59,8 @@ extension ViewController {
         if ((reachability?.connection) != .unavailable) {
             MBProgressHUD.showAdded(to: self.view, animated: true)
             
-            let url = URL(string: APIManager.shared.movieApi)
-            var request = URLRequest(url: url!)
+            guard let url = URL(string: APIManager.shared.movieApi) else { return }
+            var request = URLRequest(url: url)
             request.httpMethod = "GET"
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             
