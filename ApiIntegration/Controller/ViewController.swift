@@ -12,7 +12,7 @@ import MBProgressHUD
 class ViewController: UIViewController {
     
     var reachability : Reachability?
-    var taskelement: [TaskElement] = []
+    var taskelement: TaskElement?
     
 //    var taskelement: [Genre] = []
 //    var genres: [Genre] = []
@@ -31,15 +31,15 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.taskelement.count
+        return (self.taskelement?.genres.count) ?? 0
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyTableViewCell") as? MyTableViewCell else { return UITableViewCell() }
-        let item = taskelement[indexPath.row]
-//        cell.lbl1.text = "\(item.id)"
-//        cell.lbl2.text = item.name
+        let item = taskelement?.genres[indexPath.row]
+        cell.lbl1.text = "\(item?.id ?? 0)"
+        cell.lbl2.text = item?.name
         return cell
 
     }
@@ -64,41 +64,18 @@ extension ViewController {
             request.httpMethod = "GET"
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             
-            
-            let sessionConfig = URLSessionConfiguration.default
-            let session = URLSession(configuration: sessionConfig, delegate: self as? URLSessionDelegate, delegateQueue: nil)
-            let dataTask = session.dataTask(with: request) { (data, response, error) in
-                
+            APIManager.shared.load(urlRequest: request, type: TaskElement.self) { result in
                 DispatchQueue.main.async {
                     MBProgressHUD.hide(for: self.view, animated: true)
-                    if error == nil && data != nil {
-                        
-                        let httpResponse = response as? HTTPURLResponse
-                        print(httpResponse?.statusCode ?? 0)
-                        
-        
-
-                        if httpResponse?.statusCode == 200 {
-                            let loginResponse = try? JSONDecoder().decode([TaskElement].self, from: data!)
-                            
-                           
-//                            let filterData = loginResponse?.filter({$0.mediaType == .image})
-//                            print("loginResponse data >>> ", loginResponse)
-//                            print("filtered data >>> ", filterData)
-//
-//                            self.taskelement = filterData ?? []
-                            self.tableView.reloadData()
-                        }
-                    }
-                    
-                    
+                }
+                switch result {
+                case .success(let response):
+                    self.taskelement = response
+                    self.tableView.reloadData()
+                case .failure(let error):
+                    print("error >>>>", error.localizedDescription)
                 }
             }
-            dataTask.resume()
-            
-            //        else {
-            //            self.SimpleAlert(withTitle: "", message: "Please Check your Internet")
-            //        }
         }
     }
 }

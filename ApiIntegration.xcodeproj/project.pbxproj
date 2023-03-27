@@ -14,7 +14,7 @@
 		CAB93B5429CC303F00DD9EC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAB93B5329CC303F00DD9EC0 /* Assets.xcassets */; };
 		CAB93B5729CC303F00DD9EC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAB93B5529CC303F00DD9EC0 /* LaunchScreen.storyboard */; };
 		CAB93B5F29CC865100DD9EC0 /* modelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB93B5E29CC865100DD9EC0 /* modelData.swift */; };
-		CAB93B6129CC86C500DD9EC0 /* apiList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB93B6029CC86C500DD9EC0 /* apiList.swift */; };
+		CAB93B6129CC86C500DD9EC0 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB93B6029CC86C500DD9EC0 /* APIManager.swift */; };
 		CAB93B6429CC875500DD9EC0 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = CAB93B6329CC875500DD9EC0 /* MBProgressHUD */; };
 		CAB93B6729CC877900DD9EC0 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = CAB93B6629CC877900DD9EC0 /* Reachability */; };
 		CAB93B6C29CC899300DD9EC0 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB93B6B29CC899300DD9EC0 /* MyTableViewCell.swift */; };
@@ -30,7 +30,7 @@
 		CAB93B5629CC303F00DD9EC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CAB93B5829CC303F00DD9EC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAB93B5E29CC865100DD9EC0 /* modelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modelData.swift; sourceTree = "<group>"; };
-		CAB93B6029CC86C500DD9EC0 /* apiList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = apiList.swift; sourceTree = "<group>"; };
+		CAB93B6029CC86C500DD9EC0 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		CAB93B6B29CC899300DD9EC0 /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,7 +69,7 @@
 				CAB93B4A29CC303E00DD9EC0 /* AppDelegate.swift */,
 				CAB93B4C29CC303E00DD9EC0 /* SceneDelegate.swift */,
 				CAB93B5E29CC865100DD9EC0 /* modelData.swift */,
-				CAB93B6029CC86C500DD9EC0 /* apiList.swift */,
+				CAB93B6029CC86C500DD9EC0 /* APIManager.swift */,
 				CAB93B6A29CC897100DD9EC0 /* Cell */,
 				CAB93B6829CC893A00DD9EC0 /* Controller */,
 				CAB93B6929CC894D00DD9EC0 /* View */,
@@ -184,7 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAB93B4F29CC303E00DD9EC0 /* ViewController.swift in Sources */,
-				CAB93B6129CC86C500DD9EC0 /* apiList.swift in Sources */,
+				CAB93B6129CC86C500DD9EC0 /* APIManager.swift in Sources */,
 				CAB93B5F29CC865100DD9EC0 /* modelData.swift in Sources */,
 				CAB93B4B29CC303E00DD9EC0 /* AppDelegate.swift in Sources */,
 				CAB93B4D29CC303E00DD9EC0 /* SceneDelegate.swift in Sources */,
